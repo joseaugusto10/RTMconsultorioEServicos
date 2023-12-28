@@ -3,16 +3,19 @@
 * Copyright 2013-2023 Start Bootstrap
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-stylish-portfolio/blob/master/LICENSE)
 */
+// Espera o DOM ser carregado
 window.addEventListener('DOMContentLoaded', event => {
-
+    // Obtém a referência para o elemento com o ID 'sidebar-wrapper'
     const sidebarWrapper = document.getElementById('sidebar-wrapper');
+    // Inicializa a variável que controla a visibilidade do botão "scroll-to-top"
     let scrollToTopVisible = false;
-    // Closes the sidebar menu
+
+    // Fecha o menu lateral
     const menuToggle = document.body.querySelector('.menu-toggle');
     menuToggle.addEventListener('click', event => {
         event.preventDefault();
         sidebarWrapper.classList.toggle('active');
-        _toggleMenuIcon();
+        _toggleMenuIcon(); // Chama a função para alternar o ícone do menu
         menuToggle.classList.toggle('active');
     })
 
@@ -22,10 +25,11 @@ window.addEventListener('DOMContentLoaded', event => {
         scrollTrigger.addEventListener('click', () => {
             sidebarWrapper.classList.remove('active');
             menuToggle.classList.remove('active');
-            _toggleMenuIcon();
+            _toggleMenuIcon(); // Chama a função para alternar o ícone do menu
         })
     });
 
+    // Função para alternar o ícone do menu
     function _toggleMenuIcon() {
         const menuToggleBars = document.body.querySelector('.menu-toggle > .fa-bars');
         const menuToggleTimes = document.body.querySelector('.menu-toggle > .fa-xmark');
@@ -39,23 +43,24 @@ window.addEventListener('DOMContentLoaded', event => {
         }
     }
 
-    // Role até o botão superior aparecer
+    // Rolagem para o topo: Mostra ou oculta o botão "scroll-to-top"
     document.addEventListener('scroll', () => {
         const scrollToTop = document.body.querySelector('.scroll-to-top');
         if (document.documentElement.scrollTop > 100) {
             if (!scrollToTopVisible) {
-                fadeIn(scrollToTop);
+                fadeIn(scrollToTop); // Mostra o botão com uma animação de fade
                 scrollToTopVisible = true;
             }
         } else {
             if (scrollToTopVisible) {
-                fadeOut(scrollToTop);
+                fadeOut(scrollToTop); // Oculta o botão com uma animação de fade
                 scrollToTopVisible = false;
             }
         }
     })
 })
 
+// Função para ocultar um elemento com uma animação de fade-out
 function fadeOut(el) {
     el.style.opacity = 1;
     (function fade() {
@@ -67,6 +72,7 @@ function fadeOut(el) {
     })();
 };
 
+// Função para mostrar um elemento com uma animação de fade-in
 function fadeIn(el, display) {
     el.style.opacity = 0;
     el.style.display = display || "block";
