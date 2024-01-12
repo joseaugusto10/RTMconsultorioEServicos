@@ -600,6 +600,7 @@ progress {
 .img-fluid {
   max-width: 100%;
   height: auto;
+  filter: grayscale(30%) contrast(70%) brightness(50%); /* Ajuste os valores conforme necessário */
 }
 
 .img-thumbnail {
@@ -4522,6 +4523,48 @@ textarea.form-control-lg {
   padding-left: 0;
   list-style: none;
 }
+
+/* Adicione este estilo para ocultar inicialmente a janela de promoção */
+#promoContainer {
+  display: none;
+  position: relative; /* Adicione esta linha para posição relativa */
+  width: 380px;
+}
+
+/* Adicione este estilo para posicionar o botão "x" no canto superior direito dentro da div */
+/* Adicione este estilo para estilizar o botão "x" */
+/* Adicione este estilo para a posição relativa do contêiner de conteúdo */
+#conteudoPromo {
+  position: relative;
+}
+
+/* Adicione este estilo para o botão "x" no canto superior direito da imagem */
+#fecharBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  color: #fff;
+  background-color: #d9534f;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Adicione este estilo para alterar a cor do botão "x" ao passar o mouse sobre ele */
+#fecharBtn:hover {
+  background-color: #c9302c;
+}
+
+/* Adicione este estilo para aumentar o tamanho da imagem */
+#imagemPromocao {
+  width: 100%;
+  height: auto;
+}
+
+
+
 
 .page-link {
   position: relative;
@@ -10969,6 +11012,7 @@ html {
   font-weight: 700;
   display: block;
   max-width: 30rem;
+  color: #fff; /* Cor branca do texto */
 }
 
 footer.footer {
@@ -11001,11 +11045,6 @@ footer.footer .social-link:hover {
   border: 0;
 }
 
-@media (max-width: 992px) {
-  .map {
-    height: 75%;
-  }
-}
 .masthead {
   min-height: 30rem;
   position: relative;
@@ -11071,10 +11110,12 @@ footer.footer .social-link:hover {
 .portfolio-item .caption .caption-content h2, .portfolio-item .caption .caption-content .h2 {
   font-size: 0.8rem;
   text-transform: uppercase;
+  text-shadow: 1px 2px 3px black;
 }
 .portfolio-item .caption .caption-content p {
   font-weight: 300;
   font-size: 1.2rem;
+  text-shadow: 1px 2px 3px black;
 }
 @media (min-width: 992px) {
   .portfolio-item {

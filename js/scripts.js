@@ -84,3 +84,28 @@ function fadeIn(el, display) {
         }
     })();
 };
+
+// -----------------------------------------------------------------
+// Janela de promoção e preços
+function togglePromocao() {
+    var promoContainer = document.getElementById('promoContainer');
+    var btnTogglePromocao = document.getElementById('btnTogglePromocao');
+
+    if (promoContainer.style.display === 'none' || promoContainer.style.display === '') {
+      mostrarPromocao();
+      btnTogglePromocao.textContent = 'Ocultar';
+    } else {
+      fecharPromocao();
+      btnTogglePromocao.textContent = 'Mostrar';
+    }
+  }
+
+  function mostrarPromocao() {
+    var promoContainer = document.getElementById('promoContainer');
+    promoContainer.style.display = 'block';
+  }
+
+  function fecharPromocao() {
+    var promoContainer = document.getElementById('promoContainer');
+    promoContainer.style.display = 'none';
+  }
