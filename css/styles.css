@@ -11183,3 +11183,64 @@ footer.footer .social-link:hover {
   font-size: 2.25rem;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
+
+/* -----------historia-------- */
+
+/* Adicione o estilo inicial para ocultar a div */
+#cont-geral {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Adicione uma classe para mostrar a div */
+#cont-geral.visible {
+  opacity: 1;
+}
+
+#titulo-historia{
+text-align: center;
+font-family: 'Italiana';
+font-weight: bold;
+color: #1a738f;
+  
+}
+
+#risco-titulo{
+  width: 10%;
+  margin: 10px auto;
+  border-style: solid #000;
+  border-width: 2.5px;
+}
+
+#paragrafo-historia{
+  font-family: 'Josefin Slab';
+  font-size:larger;
+  color: black;
+  font-weight: bold;
+}
+
+.custom-foto-historia {
+  height: 100%;
+}
+
+@media (max-width: 700px) {
+  #paragrafo-historia{
+    font-size: 14px; /* Reduza o tamanho base para telas menores */
+  }
+  .custom-foto-historia {
+    height: 150%;
+  }
+}
+
+/* ----Formulario extras---- */
+
+/* Adicione o estilo inicial para ocultar a div */
+#formulario-geral {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Adicione uma classe para mostrar a div */
+#formulario-geral.visible {
+  opacity: 1;
+}

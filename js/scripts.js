@@ -109,3 +109,65 @@ function togglePromocao() {
     var promoContainer = document.getElementById('promoContainer');
     promoContainer.style.display = 'none';
   }
+
+//   -------------Banco de dados-------------------------
+function enviarFormulario() {
+    var form = document.querySelector("form");
+    var mensagemDiv = document.querySelector("#mensagemDiv");
+
+    if (form && mensagemDiv) {
+        var formData = new FormData(form);
+
+        fetch("db.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro na solicitação: " + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data && data.status) {
+                mensagemDiv.innerText = data.status;
+
+                // Redirecionar para a tela index.html após um breve atraso
+                setTimeout(function () {
+                    window.location.href = "index.html";
+                }, 2000); // Aguarda 2 segundos (ajuste conforme necessário)
+            } else {
+                throw new Error("Resposta inválida do servidor");
+            }
+        })
+        .catch(error => {
+            console.error("Erro ao enviar formulário:", error.message);
+        });
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    var enviarBotao = document.querySelector("#enviarBotao");
+
+    if (enviarBotao) {
+        enviarBotao.addEventListener("click", enviarFormulario);
+    }
+});
+
+// -----------------Janela de carregamento geral Sobre nós----------------
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleciona a div pelo ID
+    var contGeral = document.getElementById('cont-geral');
+
+    // Adiciona a classe 'visible' para mostrar a div com efeito de fade-in
+    contGeral.classList.add('visible');
+});
+
+// -----------------Janela de carregamento geral Formulario ----------------
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleciona a div pelo ID
+    var formulariogeral = document.getElementById('formulario-geral');
+
+    // Adiciona a classe 'visible' para mostrar a div com efeito de fade-in
+    formulariogeral.classList.add('visible');
+});
