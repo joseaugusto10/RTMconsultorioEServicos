@@ -4,6 +4,11 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 
+$localdb = "localhost";
+$nomedb = "rtm_consultoria";
+$usuario = "root";
+$senha = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Receber dados do formulário
     $nome = $_POST["nome"];
@@ -12,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mensagem = $_POST["mensagem"];
 
     // Conectar ao banco de dados
-    $conn = new mysqli("localhost", "root", "", "rtm_consultoria");
+    $conn = new mysqli($localdb, $usuario, $senha, $nomedb);
 
     // Verificar a conexão
     if ($conn->connect_error) {

@@ -87,30 +87,30 @@ function fadeIn(el, display) {
 
 // -----------------------------------------------------------------
 // Janela de promoção e preços
-function togglePromocao() {
-    var promoContainer = document.getElementById('promoContainer');
-    var btnTogglePromocao = document.getElementById('btnTogglePromocao');
+// function togglePromocao() {
+//     var promoContainer = document.getElementById('promoContainer');
+//     var btnTogglePromocao = document.getElementById('btnTogglePromocao');
 
-    if (promoContainer.style.display === 'none' || promoContainer.style.display === '') {
-      mostrarPromocao();
-      btnTogglePromocao.textContent = 'Ocultar';
-    } else {
-      fecharPromocao();
-      btnTogglePromocao.textContent = 'Mostrar';
-    }
-  }
+//     if (promoContainer.style.display === 'none' || promoContainer.style.display === '') {
+//       mostrarPromocao();
+//       btnTogglePromocao.textContent = 'Ocultar';
+//     } else {
+//       fecharPromocao();
+//       btnTogglePromocao.textContent = 'Mostrar';
+//     }
+//   }
 
-  function mostrarPromocao() {
-    var promoContainer = document.getElementById('promoContainer');
-    promoContainer.style.display = 'block';
-  }
+//   function mostrarPromocao() {
+//     var promoContainer = document.getElementById('promoContainer');
+//     promoContainer.style.display = 'block';
+//   }
 
-  function fecharPromocao() {
-    var promoContainer = document.getElementById('promoContainer');
-    promoContainer.style.display = 'none';
-  }
+//   function fecharPromocao() {
+//     var promoContainer = document.getElementById('promoContainer');
+//     promoContainer.style.display = 'none';
+//   }
 
-//   -------------Banco de dados-------------------------
+//   -------------Banco de dados fORMULARIO-------------------------
 function enviarFormulario() {
     var form = document.querySelector("form");
     var mensagemDiv = document.querySelector("#mensagemDiv");
@@ -171,3 +171,77 @@ document.addEventListener('DOMContentLoaded', function() {
     // Adiciona a classe 'visible' para mostrar a div com efeito de fade-in
     formulariogeral.classList.add('visible');
 });
+
+// ---------------Assinado---------------
+
+    // Função para obter a data atual no formato desejado
+    function obterDataAtual() {
+        var meses = [
+            "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+            "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+        ];
+
+        var dataAtual = new Date();
+        var dia = dataAtual.getDate();
+        var mes = meses[dataAtual.getMonth()];
+        var ano = dataAtual.getFullYear();
+
+        return dia + " de " + mes + " de " + ano;
+    }
+
+    // Atualiza a data no elemento HTML
+    document.addEventListener("DOMContentLoaded", function() {
+        var dataAssinadoElemento = document.getElementById("data-assinado");
+        if (dataAssinadoElemento) {
+            dataAssinadoElemento.textContent = "Data: " + obterDataAtual();
+        }
+    });
+
+
+    // ---banco assinado---
+
+    $(document).ready(function(){
+
+        // Função para enviar os dados assinados para o servidor via AJAX
+        function enviarAssinado(nome) {
+            $.ajax({
+                type: 'POST',
+                url: $('#assinaturaForm').attr('action'),
+                data: {nome: nome},
+                success: function(response){
+                    $('#mensagem-assinado').show();
+                    $('#nome').val('');
+                    // Marca que o usuário já assinou
+                    localStorage.setItem('assinado', true);
+                }
+            });
+        }
+    
+        // Evento de envio do formulário
+        $('#assinaturaForm').submit(function(e){
+            e.preventDefault(); // Previne o envio padrão do formulário
+    
+            var nome = $('#nome').val();
+    
+            // Verifica se o campo de nome está preenchido
+            if (nome.trim() === '') {
+                alert('Por favor, preencha seu nome.');
+                return;
+            }
+    
+            // Verifica se o usuário já assinou anteriormente
+            if (localStorage.getItem('assinado')) {
+                alert('Você já assinou anteriormente.');
+                return;
+            }
+    
+            // Envia os dados para o servidor apenas se o usuário não tiver assinado
+            enviarAssinado(nome);
+        });
+    
+        // Evento de clique para o botão
+        $('#seuBotao').click(function() {
+            $('#assinaturaForm').submit(); // Submete o formulário
+        });
+    });
+    

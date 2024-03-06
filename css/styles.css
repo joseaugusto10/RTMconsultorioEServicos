@@ -4537,7 +4537,7 @@ textarea.form-control-lg {
 
 /* Adicione este estilo para ocultar inicialmente a janela de promoção */
 #promoContainer {
-  display: none;
+  /* display: none; */
   position: relative; /* Adicione esta linha para posição relativa */
   width: 380px;
 }
@@ -4570,8 +4570,17 @@ textarea.form-control-lg {
 
 /* Adicione este estilo para aumentar o tamanho da imagem */
 #imagemPromocao {
-  width: 100%;
-  height: auto;
+  width: 50%;
+  height: 30%;
+}
+
+@media(max-width: 800px){
+
+  /* Adicione este estilo para aumentar o tamanho da imagem */
+#imagemPromocao {
+  width: 90%;
+  height: 30%;
+}
 }
 
 
@@ -11013,7 +11022,8 @@ html {
 
 .callout {
   padding: 15rem 0;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/bg-callout.jpg");
+  /* background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/bg-callout.jpg"); */
+  background: #000;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11220,15 +11230,19 @@ color: #1a738f;
 }
 
 .custom-foto-historia {
-  height: 100%;
+  height: 90%;
+  opacity: 1; /* Altere este valor para ajustar a opacidade conforme desejado */
+  filter: brightness(1.2) contrast(1.2); /* Ajuste o brilho e contraste conforme desejado */
+  transition: opacity 0.3s ease-in-out; /* Adiciona uma transição suave para a opacidade */
 }
+
 
 @media (max-width: 700px) {
   #paragrafo-historia{
     font-size: 14px; /* Reduza o tamanho base para telas menores */
   }
   .custom-foto-historia {
-    height: 150%;
+    height: 100%;
   }
 }
 
@@ -11243,4 +11257,36 @@ color: #1a738f;
 /* Adicione uma classe para mostrar a div */
 #formulario-geral.visible {
   opacity: 1;
+}
+
+/* -------Assinado----- */
+
+.container-assinado {
+  margin-top: 50px;
+}
+#mensagem-assinado {
+  display: none;
+  margin-top: 20px;
+}
+
+.btn-whatsapp {
+  background-color: #1D809F; /* Azul claro para WhatsApp */
+  color: #fff; /* Cor do texto */
+  border-color: white; /* Remover a borda */
+}
+
+.btn-instagram {
+  background-color: #1D809F; /* Azul claro para Instagram */
+  color: #fff; /* Cor do texto */
+  border-color: white; /* Remover a borda */
+}
+
+.btn-whatsapp:hover {
+  background-color: rgba(29, 128, 159, 0.6); /* Cor de fundo mais clara com 80% de opacidade */
+  color: #fff; /* Cor do texto */
+}
+
+.btn-instagram:hover {
+  background-color: rgba(29, 128, 159, 0.8); /* Cor de fundo mais clara com 80% de opacidade */
+  color: #fff; /* Cor do texto */
 }
